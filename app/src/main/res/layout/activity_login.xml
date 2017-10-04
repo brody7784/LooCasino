@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gartmedia.brody.loocasino.login">
+
+    <View android:id="@+id/anchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        />
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/splashlines"
+        android:scaleType = "centerCrop"
+        android:layout_gravity="center"
+        android:alpha="0.5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/splashchip"
+        android:scaleType = "centerCrop"
+        android:layout_gravity="top"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:id="@+id/picLooChip" />
+
+
+    <EditText
+        android:id="@+id/txtUsername"
+        android:inputType="textPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@+id/anchor"
+        android:textAlignment="center"
+        android:layout_marginBottom="20dp"
+        android:hint="Username"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:maxLines="1"/>
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textColorHint="@android:color/white"
+        android:layout_below="@+id/txtUsername"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        android:layout_centerInParent="true"
+        android:maxLines="1"/>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_login"
+        android:textSize="25sp"
+        android:textColor="@android:color/holo_red_light"
+        android:background="@android:color/black"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        />
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:text="@string/button_create"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:layout_above="@+id/btnLogin"
+        android:layout_marginBottom="15dp"
+        />
+
+</RelativeLayout>

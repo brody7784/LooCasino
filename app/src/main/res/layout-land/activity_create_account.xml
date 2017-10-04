@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gartmedia.brody.loocasino.login">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/splashlines"
+        android:scaleType = "centerCrop"
+        android:layout_gravity="center"
+        android:alpha="0.5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <ImageView
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/splashchip"
+        android:scaleType = "centerCrop"
+        android:layout_gravity="top"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:id="@+id/picLooChip" />
+
+
+    <TextView
+        android:id="@+id/lblUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_username"
+        android:layout_marginBottom="10dp"
+        android:textSize="25sp"
+        android:textColor="@android:color/black"
+        android:layout_above="@+id/txtPassword"
+        android:layout_alignLeft="@+id/lblPassword"
+        android:layout_alignStart="@+id/lblPassword" />
+
+    <TextView
+        android:id="@+id/lblPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_password"
+        android:textSize="25sp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginStart="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/lblEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_email"
+        android:textSize="25sp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/txtUsername"
+        android:layout_alignLeft="@+id/lblUsername"
+        android:layout_alignStart="@+id/lblUsername" />
+
+    <EditText
+        android:id="@+id/txtUsername"
+        android:inputType="textPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblUsername"
+        android:layout_alignBottom="@+id/lblUsername"
+        android:ems="7"
+        android:hint="      Username"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:maxLines="1"
+        android:layout_alignRight="@+id/picLooChip"
+        android:layout_alignEnd="@+id/picLooChip" />
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:inputType="textPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="  Password   "
+        android:ems="7"
+        android:layout_alignBaseline="@+id/lblPassword"
+        android:layout_alignRight="@+id/picLooChip"
+        android:textSize="25sp"
+        android:textColor="@android:color/black"
+        android:maxLines="1"/>
+
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="      E-mail "
+        android:ems="7"
+        android:textSize="25sp"
+        android:inputType="textEmailAddress"
+        android:layout_alignBaseline="@+id/lblEmail"
+        android:layout_alignRight="@+id/txtPassword" />
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:text="@string/button_submit"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_alignBottom="@+id/lblPassword"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
