@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+    
+    <TextView
+        android:id="@+id/txtGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:text="WAR"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:id="@+id/txtOutcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/txtGame"
+        android:layout_marginRight="15dp"
+        android:textColor="@android:color/white"
+        android:text="WIN"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/txtOutcome"
+        android:text="DATE"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"/>
+
+</android.widget.RelativeLayout>

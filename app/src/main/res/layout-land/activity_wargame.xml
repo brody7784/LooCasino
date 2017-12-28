@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gartmedia.brody.loocasino.wargame">
+
+    <View
+        android:id="@+id/warView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:layout_weight="1"
+        android:visibility="gone"/>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/splashlines"
+        android:scaleType = "centerCrop"
+        android:layout_gravity="center"
+        android:alpha="0.5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Bet: $0"
+        android:textColor="@android:color/black"
+        android:background="@android:color/holo_green_light"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/betAmount"
+        android:alpha="0.7"
+        android:visibility="gone"
+        />
+    <include layout="@layout/profilebar"
+        android:id="@+id/profileBar"/>
+
+    <TextView
+        android:id="@+id/playerCardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_playercard"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/dealerCardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_dealercard"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone"
+        />
+
+    <LinearLayout
+        android:id="@+id/warLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/chipsLayout"
+        android:layout_marginBottom="15dp"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:id="@+id/warPlayerCard"
+            android:src="@drawable/backcard"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+
+        <ImageButton
+            android:id="@+id/warStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/warbutton"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+
+        <ImageView
+            android:id="@+id/warDealerCard"
+            android:src="@drawable/backcard"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:layout_alignLeft="@+id/warView"
+            android:layout_alignStart="@+id/warView"
+            android:layout_above="@+id/chipsLayout"
+            android:layout_weight="1"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/chipsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/profileBar"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone">
+
+        <ImageButton
+            android:id="@+id/clearButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/clearbutton"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.6"/>
+
+
+        <ImageButton
+            android:id="@+id/chip1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chip1"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <ImageButton
+            android:id="@+id/chip5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chip5"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <ImageButton
+            android:id="@+id/chip25"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chip25"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <ImageButton
+            android:id="@+id/chip50"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chip50"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <ImageButton
+            android:id="@+id/chip100"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chip100"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/outcomesList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/profileBar"/>
+
+
+</RelativeLayout>
