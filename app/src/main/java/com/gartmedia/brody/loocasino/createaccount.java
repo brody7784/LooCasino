@@ -15,10 +15,14 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 public class createaccount extends AppCompatActivity
             implements View.OnClickListener {
+
+        Database db;
         private EditText nEmail;
         private EditText nUsername;
         private EditText nPassword;
@@ -33,6 +37,7 @@ public class createaccount extends AppCompatActivity
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_create_account);
 
+            db = new Database(this);
             nEmail =(EditText)
                     findViewById(R.id.txtEmail);
             nUsername =(EditText)
@@ -40,11 +45,8 @@ public class createaccount extends AppCompatActivity
             nPassword =(EditText)
                     findViewById(R.id.txtPassword);
 
-
-
             create=(Button)
                     findViewById(R.id.btnCreate);
-
 
             create.setOnClickListener(this);
         }
@@ -56,9 +58,14 @@ public class createaccount extends AppCompatActivity
             username=nUsername.getText().toString();
             password=nPassword.getText().toString();
 
-            if(password.length()<5|| password == null)
+            if (username.length()<4 ||username.length()>13 || username == null||username.contains(" "))
             {
-                nPassword.setError("Password must be 5 characters long");
+                nUsername.setError("Username must be 4-13 characters and contain no spaces");
+                errors +=1;
+            }
+            if(password.length()<5||password.length()>20 || password == null)
+            {
+                nPassword.setError("Password must be 5-20 characters");
                 errors+=1;
             }
             if(!isValidEmail(email))
@@ -69,10 +76,20 @@ public class createaccount extends AppCompatActivity
 
             if (errors==0)
             {
-                Intent intent = new Intent(this, login.class);// New activity
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
+                String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+                boolean isInserted= db.insertAccount(username, password, 500.00, email, currentDateTimeString);
+                if (isInserted)
+                {
+                    Toast.makeText(getApplicationContext(), "Welcome " + username, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(this, login.class);// New activity
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Sorry something went wrong", Toast.LENGTH_LONG).show();
+                }
             }
             errors=0;
         }

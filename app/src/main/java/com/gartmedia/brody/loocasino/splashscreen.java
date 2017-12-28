@@ -1,7 +1,9 @@
 package com.gartmedia.brody.loocasino;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -92,22 +94,32 @@ public class splashscreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splashscreen);
-
+        Database db = new Database(this);
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
-        final Intent intent = new Intent(this, login.class);// New activity
+        final Intent intentNotLoggedIn = new Intent(this, login.class);// If not Logged in
+        final Intent intentLoggedIn = new Intent(this, mainmenu.class);// If Logged in
+
         new Timer().schedule(new TimerTask(){
             public void run() {
+                SharedPreferences sharedPrefs = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+                Boolean isLoggedIn = sharedPrefs.getBoolean("isLoggedIn", false);
+                if (isLoggedIn)
+                {
+                    intentLoggedIn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intentLoggedIn);
+                }
+                else if (!isLoggedIn)
+                {
+                    intentNotLoggedIn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intentNotLoggedIn);
+                }
 
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
                 finish();
             }
         }, 5000L);
-
-
     }
 
     @Override
