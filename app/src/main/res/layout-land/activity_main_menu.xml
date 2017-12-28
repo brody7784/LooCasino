@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gartmedia.brody.loocasino.mainmenu">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/splashlines"
+        android:scaleType = "centerCrop"
+        android:layout_gravity="center"
+        android:alpha="0.5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/splashchip"
+        android:scaleType = "centerCrop"
+        android:layout_gravity="top"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/picLooChip"
+        android:background="@android:color/transparent"
+        />
+
+    <ImageButton
+        android:id="@+id/btnLogout"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@drawable/logout"
+        android:scaleType = "centerCrop"
+        android:layout_gravity="top"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        />
+
+    <ImageButton
+        android:id="@+id/btnRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rate"
+        android:scaleType = "centerCrop"
+        android:layout_gravity="top"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_below="@+id/picLooChip"
+        android:layout_marginTop="25dp"
+        android:layout_above="@+id/profileBar">
+
+       <ImageButton
+            android:id="@+id/btnMMWar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/waricon"
+            android:layout_weight="1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@android:color/transparent"
+            />
+
+        <ImageButton
+            android:id="@+id/btnMMBlackjack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/blackjackicon"
+            android:layout_weight="1"
+            android:layout_marginRight="30dp"
+            android:background="@android:color/transparent"
+            />
+
+        <ImageButton
+            android:id="@+id/btnRules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rulesicon"
+            android:layout_weight="1"
+            android:layout_marginRight="30dp"
+            android:background="@android:color/transparent"
+            />
+
+    </LinearLayout>
+
+    <include layout="@layout/profilebar"></include>
+
+</RelativeLayout>
