@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chipsLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_above="@+id/profileBar"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/chiplines">
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/relativeCards"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/card1"-->
+            <!--android:layout_width="175dp"-->
+            <!--android:layout_height="175dp"-->
+            <!--android:background="@drawable/card10"-->
+            <!--/>-->
+        <!--<ImageView-->
+            <!--android:layout_width="175dp"-->
+            <!--android:layout_height="175dp"-->
+            <!--android:background="@drawable/card9"-->
+            <!--android:layout_marginLeft="50dp"/>-->
+
+    <!--</RelativeLayout>-->
+    <ImageButton
+        android:id="@+id/clearButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/clearbutton"
+        android:background="@android:color/transparent"
+        android:layout_weight="0.7" />
+
+    <ImageButton
+        android:id="@+id/chip1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/chip1"
+        android:background="@android:color/transparent"
+        android:layout_weight="1"/>
+    <ImageButton
+        android:id="@+id/chip5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/chip5"
+        android:background="@android:color/transparent"
+        android:layout_weight="1"/>
+    <ImageButton
+        android:id="@+id/chip25"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/chip25"
+        android:background="@android:color/transparent"
+        android:layout_weight="1"/>
+    <ImageButton
+        android:id="@+id/chip50"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/chip50"
+        android:background="@android:color/transparent"
+        android:layout_weight="1"/>
+    <ImageButton
+        android:id="@+id/chip100"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/chip100"
+        android:background="@android:color/transparent"
+        android:layout_weight="1"/>
+
+</LinearLayout>
