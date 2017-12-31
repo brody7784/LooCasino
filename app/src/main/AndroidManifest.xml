@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gartmedia.brody.loocasino">
 
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -39,8 +41,9 @@
         <activity
             android:name=".blackjackgame"
             android:screenOrientation="fullSensor" />
-        <activity android:name=".rulespage"
-            android:screenOrientation="fullSensor"/>
+        <activity
+            android:name=".rulespage"
+            android:screenOrientation="fullSensor" />
 
         <service android:name=".firebasenotifs">
             <intent-filter>
@@ -56,7 +59,8 @@
             </intent-filter>
         </service>
 
-
+        <activity android:name=".DownloadStategy"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
