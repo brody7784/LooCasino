@@ -1,0 +1,56 @@
+War Rules:
+Place your bets using the chips located at the bottom.
+When you like your bet click the 'WAR' spade in the middle of the screen.
+The game will show a card on the left (your card) and a card on the right (dealer card).
+The goal of the game is to have a higher card then the dealer to win the game and 2X your bet.
+If you have a card valued less then the dealers, you lose the game and your bet.
+If you tie then money is returned to you.
+Card values are as shown:
+Ace = 14
+King = 13
+Queen = 12
+Jack = 11
+10 to 2 = Value on card
+Good Luck!
+
+
+Blackjack Rules:
+Place your bets using the chips located at the bottom.
+When you like your bet click the 'DEAL	' spade in the middle of the screen.
+The game will give you (left) and the dealer (right) 2 cards, one of the dealers will not be shown.
+The value of your cards are in the top left and the value of the dealers shown cards are in the top right.
+The goal of the game is to get the closest to 21 and not go over or else that is a bust and you lose.
+Card values are as shown:
+Ace = 1/11 (if value is over 21 if ace is 11 then it becomes a 1)
+King, Queen, Jack and 10 = 10
+9 to 2 = Value on card
+
+Dealer Rules:
+Dealer must stand on 17 to 21
+Dealer goes over 21 it is a bust
+Dealer is under 17 it must hit unless you busted before hand
+Dealer blackjack beats player blackjack
+
+Buttons:
+'Hit Me!' guves you another card 
+'Stand' means you like your hand and now want the dealer show his card
+'Double Down' means you want to double your bet in exchange for one card (it is an auto stand after this hit)
+
+Ways to Win:
+If you are dealt an Ace with any 10 value card of the first deal and the dealer did not then you have a blackjack.
+If your score when you stand is higher then the dealers when he is done dealing himself.
+If dealer goes over 21 after you stand.
+
+Ways to lose:
+Dealer gets blackjack
+Dealer gets better score after you stand
+You bust on a 'Hit' or 'Double Down'
+
+Payouts:
+Blackjack = 3:2
+Normal = 1:1
+Double Down = 2:1
+
+Scores will be updated after each hit for player and dealers will be updated once a finishing score is dealt.
+
+Good Luck!
