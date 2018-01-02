@@ -202,6 +202,6 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/profileBar"/>
 
-    <include layout="@layout/profilebar"></include>
+
 
 </RelativeLayout>
