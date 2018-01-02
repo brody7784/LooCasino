@@ -2,12 +2,13 @@ package com.gartmedia.brody.loocasino;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -47,6 +48,7 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
 
     List<Integer> playerCards = new ArrayList<Integer>();
     List<Integer> dealerCards = new ArrayList<Integer>();
+
 
 
     private RelativeLayout playerCardsLayout;
@@ -226,6 +228,9 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
         Double cash = (double)sharedPrefs.getInt("cash", 0);
         String username = sharedPrefs.getString("username", "");
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+        final MediaPlayer mpYay = MediaPlayer.create(this, R.raw.yay);
+        final MediaPlayer mpBoo = MediaPlayer.create(this, R.raw.boo);
+
 
         switch (v.getId()) {
             case R.id.chip1:
@@ -274,6 +279,7 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.bjButton:
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
                 if (doShuffle>=40)
                 {
                     doShuffle();
@@ -349,6 +355,7 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
 
                         if (dealerCards.get(0)+dealerCards.get(1)==21 && aceExistsDealer)
                         {
+                            standBustButtons();
                             boolean isInserted = db.insertOutcome(username, "Blackjack", "BJLOSS", currentDateTimeString);
                             if (isInserted==false)
                             {
@@ -358,6 +365,7 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
                             {
                                 Toast.makeText(getApplicationContext(), "Game data recorded in history", Toast.LENGTH_SHORT).show();
                             }
+                            mpBoo.start();
                             Toast.makeText(getApplicationContext(), "dealer has blackjack", Toast.LENGTH_SHORT).show();
                             imageDealerCard2.setBackgroundResource(dealerCard2[2]);
                             dv =dealerCards.get(0) + dealerCards.get(1);
@@ -368,6 +376,7 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
                                     public void run() {
                                         // Do something after 5s = 5000ms
                                         newGameButtons();
+                                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
 
                                     }
                                 }, 4500);
@@ -375,6 +384,7 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
 
                         else if (playerCards.get(0)+playerCards.get(1)==21 && aceExistsPlayer)
                         {
+                            standBustButtons();
                             boolean isInserted = db.insertOutcome(username, "Blackjack", "BJWIN", currentDateTimeString);
                             if (isInserted==false)
                             {
@@ -385,6 +395,7 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
                                 Toast.makeText(getApplicationContext(), "Game data recorded in history", Toast.LENGTH_SHORT).show();
                             }
 
+                            mpYay.start();
                             Boolean newCash = db.updateCash(cash+(bet*1.5), username);
                             if(newCash)
                             {
@@ -399,6 +410,7 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
                                     public void run() {
                                         // Do something after 5s = 5000ms
                                         newGameButtons();
+                                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
 
                                     }
                                 }, 4500);
@@ -466,12 +478,15 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(getApplicationContext(), "Game data recorded in history", Toast.LENGTH_SHORT).show();
                     }
 
+                    mpBoo.start();
+
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             // Do something after 5s = 5000ms
                             newGameButtons();
+                            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
                         }
                     }, 4500);
                 }
@@ -565,6 +580,7 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
                     Boolean cashGivin = db.updateCash(cash + (bet*2), username);
                     if (cashGivin)
                     {
+                        mpYay.start();
                         updateCashValues();
                         Toast.makeText(getApplicationContext(), "Player wins by dealer bust", Toast.LENGTH_SHORT).show();
                         final Handler handler = new Handler();
@@ -596,6 +612,7 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
                     Boolean cashTaken = db.updateCash(cash+(bet*2), username);
                     if (cashTaken)
                     {
+                        mpYay.start();
                         updateCashValues();
                         Toast.makeText(getApplicationContext(), "Player wins by score", Toast.LENGTH_SHORT).show();
                         final Handler handler = new Handler();
@@ -626,7 +643,7 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
                     {
                         Toast.makeText(getApplicationContext(), "Game data recorded in history", Toast.LENGTH_SHORT).show();
                     }
-
+                    mpBoo.start();
                     Toast.makeText(getApplicationContext(), "dealer wins by player bust", Toast.LENGTH_SHORT).show();
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -652,6 +669,7 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(getApplicationContext(), "Game data recorded in history", Toast.LENGTH_SHORT).show();
                     }
 
+                    mpBoo.start();
                     Toast.makeText(getApplicationContext(), "dealer wins by score", Toast.LENGTH_SHORT).show();
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -663,84 +681,98 @@ public class blackjackgame extends AppCompatActivity implements View.OnClickList
                     }, 4500);
 
                 }
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
                 break;
 
             case R.id.ddButton:
-
-                Boolean cashTaken = db.updateCash(cash - bet, username);
-                bet*=2;
-                betAmount.setText("Bet: $" +bet.toString());
-                updateCashValues();
-
-                hitCardNumPlayer +=1;
-                doShuffle+=1;
-                Integer[] cardPlayerDD = dealCardsRandom();
-                Integer newCardPlayerDD = returnCardValue(cardPlayerDD[2]);
-                cards[cardPlayerDD[0]][cardPlayerDD[1]] = 0;
-                addCard(hitCardNumPlayer, cardPlayerDD[2]);
-                playerCards.add(newCardPlayerDD);
-                playerScore = sum(playerCards);
-                amountAcesPlayer = checkAces(playerCards);
-
-                if (amountAcesPlayer>0 && highAcePlayer && playerScore>21)
+                if (cash-bet>0)
                 {
-                    playerCards.add(-10);
-                    highAcePlayer=false;
-                }
-
-                if (newCardPlayerDD == 1 && playerScore+10<=21)
-                {
-                    playerCards.add(10);
-                }
-
-                playerScore = sum(playerCards);
-                playerValue.setText(playerScore.toString());
-
-
-                if(playerScore>21)
-                {
-                    standBustButtons();
-                    playerBusts=true;
-                    Toast.makeText(getApplicationContext(), "and that's a bust, Sorry", Toast.LENGTH_SHORT).show();
-
-                    boolean isInserted = db.insertOutcome(username, "Blackjack", "LOSS", currentDateTimeString);
-                    if (isInserted==false)
+                    Boolean cashTaken = db.updateCash(cash - bet, username);
+                    if (cashTaken)
                     {
-                        Toast.makeText(getApplicationContext(), "Game data not inserted in game history", Toast.LENGTH_SHORT).show();
+                        bet*=2;
+                        betAmount.setText("Bet: $" +bet.toString());
+                        updateCashValues();
+
+                        hitCardNumPlayer +=1;
+                        doShuffle+=1;
+                        Integer[] cardPlayerDD = dealCardsRandom();
+                        Integer newCardPlayerDD = returnCardValue(cardPlayerDD[2]);
+                        cards[cardPlayerDD[0]][cardPlayerDD[1]] = 0;
+                        addCard(hitCardNumPlayer, cardPlayerDD[2]);
+                        playerCards.add(newCardPlayerDD);
+                        playerScore = sum(playerCards);
+                        amountAcesPlayer = checkAces(playerCards);
+
+                        if (amountAcesPlayer>0 && highAcePlayer && playerScore>21)
+                        {
+                            playerCards.add(-10);
+                            highAcePlayer=false;
+                        }
+
+                        if (newCardPlayerDD == 1 && playerScore+10<=21)
+                        {
+                            playerCards.add(10);
+                        }
+
+                        playerScore = sum(playerCards);
+                        playerValue.setText(playerScore.toString());
+
+
+                        if(playerScore>21)
+                        {
+                            standBustButtons();
+                            playerBusts=true;
+                            Toast.makeText(getApplicationContext(), "and that's a bust, Sorry", Toast.LENGTH_SHORT).show();
+
+                            boolean isInserted = db.insertOutcome(username, "Blackjack", "LOSS", currentDateTimeString);
+                            if (isInserted==false)
+                            {
+                                Toast.makeText(getApplicationContext(), "Game data not inserted in game history", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(getApplicationContext(), "Game data recorded in history", Toast.LENGTH_SHORT).show();
+                            }
+                            mpBoo.start();
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // Do something after 5s = 5000ms
+                                    newGameButtons();
+                                }
+                            }, 4500);
+                        }
+
+                        else if(playerScore==21)
+                        {
+
+                            standBustButtons();
+                            standButton.performClick();
+                            Toast.makeText(getApplicationContext(), "21, good hand", Toast.LENGTH_SHORT).show();
+                        }
+
+                        if (!playerBusts)
+                        {
+                            standBustButtons();
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    standButton.performClick();
+                                }
+                            }, 3000);
+                        }
                     }
                     else
                     {
-                        Toast.makeText(getApplicationContext(), "Game data recorded in history", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Sorry double down failed", Toast.LENGTH_SHORT).show();
                     }
-
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Do something after 5s = 5000ms
-                            newGameButtons();
-                        }
-                    }, 4500);
                 }
-
-                else if(playerScore==21)
+                else
                 {
-
-                    standBustButtons();
-                    standButton.performClick();
-                    Toast.makeText(getApplicationContext(), "21, good hand", Toast.LENGTH_SHORT).show();
-                }
-
-                if (!playerBusts)
-                {
-                    standBustButtons();
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            standButton.performClick();
-                        }
-                    }, 3000);
+                    Toast.makeText(getApplicationContext(), "Sorry not enough cash for double down", Toast.LENGTH_SHORT).show();
                 }
 
                 break;

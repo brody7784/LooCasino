@@ -22,6 +22,7 @@ public class mainmenu extends AppCompatActivity
     private ImageButton contact;
     private ImageButton logout;
     private ImageButton rate;
+    private ImageButton settings;
     private TextView cash;
     private TextView usernameText;
 
@@ -46,6 +47,8 @@ public class mainmenu extends AppCompatActivity
                 findViewById(R.id.btnLogout);
         rate=(ImageButton)
                 findViewById(R.id.btnRate);
+        settings=(ImageButton)
+                findViewById(R.id.btnSettings);
         cash = (TextView)
                 findViewById(R.id.txtCash);
         usernameText = (TextView)
@@ -59,7 +62,7 @@ public class mainmenu extends AppCompatActivity
         logout.setOnClickListener(this);
         rate.setOnClickListener(this);
         contact.setOnClickListener(this);
-
+        settings.setOnClickListener(this);
 
 
     }
@@ -136,6 +139,11 @@ public class mainmenu extends AppCompatActivity
                 break;
             case R.id.btnRate:
                 launchMarket();
+                break;
+            case R.id.btnSettings:
+                Intent intentSettings = new Intent(this, settings.class);
+                intentSettings.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intentSettings);
                 break;
             case R.id.picLooChip:
                 Intent intent = new Intent(Intent.ACTION_VIEW);

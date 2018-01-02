@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -277,6 +278,8 @@ public class wargame extends AppCompatActivity implements View.OnClickListener {
                         }
 
                         Toast.makeText(getApplicationContext(), "You Won", Toast.LENGTH_SHORT).show();
+                        final MediaPlayer mp = MediaPlayer.create(this, R.raw.yay);
+                        mp.start();
 
                         boolean isInserted = db.insertOutcome(username, "War", "WIN", currentDateTimeString);
                         if (isInserted==false)
@@ -297,7 +300,8 @@ public class wargame extends AppCompatActivity implements View.OnClickListener {
                         }
 
                         Toast.makeText(getApplicationContext(), "You Lost", Toast.LENGTH_SHORT).show();
-
+                        final MediaPlayer mp = MediaPlayer.create(this, R.raw.boo);
+                        mp.start();
                         boolean isInserted = db.insertOutcome(username, "War", "LOSS", currentDateTimeString);
                         if (isInserted==false)
                         {
