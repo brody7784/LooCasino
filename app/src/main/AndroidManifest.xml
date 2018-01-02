@@ -59,8 +59,16 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".DownloadStategy"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".DownloadStategy"
+            android:screenOrientation="portrait" />
+        <activity android:name=".settings"
+            android:screenOrientation="fullSensor"/>
+
+        <service
+            android:name=".ambianceService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
